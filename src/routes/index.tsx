@@ -145,7 +145,7 @@ function Index() {
         <div className="relative mx-auto max-w-3xl px-6 py-14 text-center text-primary-foreground">
           <p className="text-sm font-semibold uppercase tracking-widest opacity-90">MacroMix</p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            Your daily macros, simplified.
+            Daily Macros
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-base opacity-95">
             Tell us a bit about you and your goal — we'll recommend your calories, protein,
