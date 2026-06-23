@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link } from "@tanstack/react-router";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/calculator")({
   head: () => ({
@@ -141,7 +142,10 @@ function Calculator() {
         <Link to="/" className="text-lg font-bold tracking-tight text-foreground">
           My Macros
         </Link>
-        <div className="text-sm text-muted-foreground">Calculator</div>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-muted-foreground">Calculator</span>
+          <ThemeToggle />
+        </div>
       </nav>
 
       <header className="relative overflow-hidden">
