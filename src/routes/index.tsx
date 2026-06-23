@@ -31,12 +31,15 @@ function LandingPage() {
         <span className="text-xl font-bold tracking-tight text-foreground">
           My Macros
         </span>
-        <Link
-          to="/calculator"
-          className="text-sm font-medium text-foreground transition-colors hover:text-primary"
-        >
-          Calculator
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/calculator"
+            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+          >
+            Calculator
+          </Link>
+          <ThemeToggle />
+        </div>
       </nav>
 
       {/* Hero */}
