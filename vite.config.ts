@@ -13,11 +13,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: {
-    plugins: [
+  //vite: {
+    //plugins: [
       //nitro({
         //preset: "vercel",
       //}),
-    ],
-  },
+    //],
+  //},
 });
