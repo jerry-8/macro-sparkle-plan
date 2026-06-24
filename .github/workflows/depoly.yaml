@@ -5,10 +5,10 @@ on:
     branches:
       - main # Change to master if your default branch is named master
 
-#permissions:
-#  contents: read
-#  pages: write
-#  id-token: write
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 #concurrency:
 #  group: 'pages'
