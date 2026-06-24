@@ -6,7 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-//import { nitro } from "nitro/vite";  // for vercel
+import { nitro } from "nitro/vite";  // for vercel
 
 export default defineConfig({
   base: '/jerry-8.github.io/',
@@ -17,13 +17,13 @@ export default defineConfig({
   },
   //plugins: [],  // for Cloudflare
   // for vercel
-  //vite: {
-  //  plugins: [
-  //    nitro({
+  vite: {
+    plugins: [
+      nitro({
   //      preset: "vercel",
-  //    }),
-  //  ],
-  // },
+      }),
+    ],
+   },
 });
 
 /*
