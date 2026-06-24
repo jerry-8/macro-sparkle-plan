@@ -4,6 +4,7 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+/*
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 //import { nitro } from "nitro/vite";  // for vercel
 
@@ -22,5 +23,27 @@ export default defineConfig({
   //    }),
   //  ],
   // },
-  base: '/jerry-8.github.io/'
 });
+*/
+
+// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
+
+export default defineConfig({
+  // Highlight-start
+  base: '/jerry-8.github.io/', // Must match your exact GitHub repository name wrapped in slashes
+  // Highlight-end
+  plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
+    react(),
+  ],
+  build: {
+    outDir: 'dist',
+  },
+})
+
