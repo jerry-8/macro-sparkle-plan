@@ -16,7 +16,8 @@ export default defineConfig({
   vite: {
     plugins: [
       nitro({
-        preset: "vercel",
+        //preset: "vercel",
+        preset: "cloudflare",
       }),
     ],
   },
