@@ -1,0 +1,116 @@
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { jsx } from "react/jsx-runtime";
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { Moon, Sun } from "lucide-react";
+//#region src/lib/utils.ts
+function cn(...inputs) {
+	return twMerge(clsx(inputs));
+}
+//#endregion
+//#region src/components/ui/button.tsx
+var buttonVariants = cva("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", {
+	variants: {
+		variant: {
+			default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+			destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+			outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+			secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+			ghost: "hover:bg-accent hover:text-accent-foreground",
+			link: "text-primary underline-offset-4 hover:underline"
+		},
+		size: {
+			default: "h-9 px-4 py-2",
+			sm: "h-8 rounded-md px-3 text-xs",
+			lg: "h-10 rounded-md px-8",
+			icon: "h-9 w-9"
+		}
+	},
+	defaultVariants: {
+		variant: "default",
+		size: "default"
+	}
+});
+var Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+	return /* @__PURE__ */ jsx(asChild ? Slot : "button", {
+		className: cn(buttonVariants({
+			variant,
+			size,
+			className
+		})),
+		ref,
+		...props
+	});
+});
+Button.displayName = "Button";
+//#endregion
+//#region src/components/ui/card.tsx
+var Card = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("rounded-xl border bg-card text-card-foreground shadow", className),
+	...props
+}));
+Card.displayName = "Card";
+var CardHeader = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("flex flex-col space-y-1.5 p-6", className),
+	...props
+}));
+CardHeader.displayName = "CardHeader";
+var CardTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("font-semibold leading-none tracking-tight", className),
+	...props
+}));
+CardTitle.displayName = "CardTitle";
+var CardDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("text-sm text-muted-foreground", className),
+	...props
+}));
+CardDescription.displayName = "CardDescription";
+var CardContent = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("p-6 pt-0", className),
+	...props
+}));
+CardContent.displayName = "CardContent";
+var CardFooter = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", {
+	ref,
+	className: cn("flex items-center p-6 pt-0", className),
+	...props
+}));
+CardFooter.displayName = "CardFooter";
+//#endregion
+//#region src/components/theme-toggle.tsx
+function ThemeToggle() {
+	const [theme, setTheme] = useState("light");
+	useEffect(() => {
+		const stored = localStorage.getItem("theme");
+		if (stored) {
+			setTheme(stored);
+			document.documentElement.classList.toggle("dark", stored === "dark");
+		} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+			setTheme("dark");
+			document.documentElement.classList.add("dark");
+		}
+	}, []);
+	const toggle = () => {
+		const next = theme === "light" ? "dark" : "light";
+		setTheme(next);
+		localStorage.setItem("theme", next);
+		document.documentElement.classList.toggle("dark", next === "dark");
+	};
+	return /* @__PURE__ */ jsx(Button, {
+		variant: "ghost",
+		size: "icon",
+		onClick: toggle,
+		"aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`,
+		children: theme === "light" ? /* @__PURE__ */ jsx(Moon, { className: "size-5" }) : /* @__PURE__ */ jsx(Sun, { className: "size-5" })
+	});
+}
+//#endregion
+export { cn as i, Card as n, Button as r, ThemeToggle as t };
