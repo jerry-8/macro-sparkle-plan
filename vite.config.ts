@@ -20,5 +20,5 @@ export default defineConfig({
       }),
     ],
   },
-  base: '/jerry-8.github.io/'
+  base: '/macro-sparkle-plan/'
 });
