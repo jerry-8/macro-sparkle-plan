@@ -9,18 +9,18 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";  // for vercel
 
 export default defineConfig({
-  base: '/jerry-8.github.io/',
+  //base: '/jerry-8.github.io/',
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  //plugins: [],  // for Cloudflare
+  plugins: [],  // for Cloudflare
   // for vercel
   vite: {
     plugins: [
       nitro({
-  //      preset: "vercel",
+        preset: "vercel",
       }),
     ],
    },
