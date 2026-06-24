@@ -13,7 +13,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  //plugins: [],  // for Cloudflare
+  plugins: [],  // for Cloudflare
   // for vercel
   //vite: {
   //  plugins: [
