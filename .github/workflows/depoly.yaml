@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22 # Matches Lovable's standard build environment
-          cache: 'npm'
+          #cache: 'npm'
           #cache-dependency-path: './packages.lock.json'
 
       - name: Install dependencies
